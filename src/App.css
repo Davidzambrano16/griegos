@@ -15,7 +15,8 @@ html, body {
   overflow-x: hidden; /* evita scroll horizontal */
   width: 100%;
   font-family: var(--font-body);
-  background: var(--light-gray);
+    background: linear-gradient(135deg, var(--light-blue), var(--green));
+
   color: var(--gray);
 }
 
@@ -76,43 +77,53 @@ img {
 .fade-in   { animation: fadeIn 1s ease forwards; }
 
 /* ====== HERO ====== */
+/* Hero ocupa toda la pantalla */
 .hero {
-  text-align: center;
-  padding: 1rem;
-  background: var(--light-blue);
+  width: 100%;
+  height: 100vh; /* 🔑 altura fija a toda la pantalla */
   overflow: hidden;
-
-  /* 🔑 ocupa toda la pantalla */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centra verticalmente */
-  align-items: center;     /* centra horizontalmente */
-}
-
-.hero-logo {
-  width: 120px;
-  margin: 0 auto 1rem auto;
-  display: block;
+  position: relative;
 }
 
 .hero-swiper {
   width: 100%;
-  max-width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
+  height: 100%;
+
 }
 
 .hero-banner {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover; /* llena la pantalla sin deformar */
+}
+
+/* En mobile, si no quieres que se corte la imagen */
+@media (max-width: 768px) {
+  .hero-banner {
+    object-fit: contain; /* 🔑 muestra toda la imagen sin recortar */
+  }
+}
+
+/* Logo en sección aparte */
+
+.hero-logo-section {
+  height: 100vh;              /* 🔑 ocupa la mitad de la pantalla */
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */ /* opcional, para diferenciar del banner */
+
+}
+.hero-logo {
+  max-width: 100%;            /* ancho máximo relativo */
+  max-height: 100%;           /* altura máxima relativa */
+  object-fit: contain;       /* evita distorsión */
+  animation: fadeDown 1s ease forwards; /* animación al cargar */
 }
 
 /* ====== PRODUCTOS ====== */
 .products {
   padding: 2rem 1rem;
-  background: linear-gradient(135deg, var(--light-blue), var(--blue));
+    background: linear-gradient(135deg, var(--light-blue), var(--light-gray));
 }
 
 .products-list {
@@ -251,7 +262,7 @@ img {
 
 /* ====== FOOTER ====== */
 .footer {
-  background: var(--green);
+  background: var(--blue);
   color: white;
   padding: 1rem;
   text-align: center;
