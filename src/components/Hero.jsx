@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import logo from "../assets/logo.jpg";
+import logo from "../assets/Logo.jpg";
 import banner1 from "../assets/banners/BANNER1.jpg";
 import banner2 from "../assets/banners/BANNER2.jpg";
 import banner3 from "../assets/banners/BANNER3.jpg";
