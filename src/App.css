@@ -1,0 +1,286 @@
+/* ====== VARIABLES Y BASE ====== */
+:root {
+  --green: #83ba3f;
+  --blue: #a1cbe7;
+  --light-blue: #c4d5eb;
+  --gray: #3c3c3b;
+  --light-gray: #ededed;
+  --font-body: 'Montserrat', sans-serif;
+  --font-title: 'The Seasons', serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* evita scroll horizontal */
+  width: 100%;
+  font-family: var(--font-body);
+  background: var(--light-gray);
+  color: var(--gray);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.section-title{
+    font-family: var(--font-title);
+  font-size: 3rem;
+}
+
+.product-card h3,
+.hero-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.app {
+  text-align: center;
+}
+
+/* ====== ANIMACIONES ====== */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-down { animation: fadeDown 1s ease forwards; }
+.fade-in   { animation: fadeIn 1s ease forwards; }
+
+/* ====== HERO ====== */
+.hero {
+  text-align: center;
+  padding: 1rem;
+  background: var(--light-blue);
+  overflow: hidden;
+
+  /* 🔑 ocupa toda la pantalla */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: center;     /* centra horizontalmente */
+}
+
+.hero-logo {
+  width: 120px;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.hero-swiper {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-banner {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ====== PRODUCTOS ====== */
+.products {
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, var(--light-blue), var(--blue));
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.product-card {
+  width: 100%;
+  text-align: center;
+  opacity: 0; /* inicia invisible */
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.product-card.visible {
+  opacity: 1;
+  transform: translateY(0); /* animación al hacer scroll */
+}
+
+.product-img {
+  width: 100%;
+  height: 350px; /* altura fija para uniformidad */
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 auto 1rem auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.product-img:hover {
+  transform: scale(1.02);
+}
+
+.product-card h3 {
+  margin: 0.5rem 0;
+  color: var(--green);
+}
+
+.product-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+/* ====== MODAL ====== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: var(--green);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* ====== TOPPINGS ====== */
+.toppings {
+  padding: 2rem 1rem;
+}
+
+.toppings-grid, .syrups-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.topping-card, .syrup-card {
+  background: white;
+  border-radius: 20px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.topping-card:hover, .syrup-card:hover {
+  background: var(--light-blue);
+  transform: translateY(-3px);
+}
+
+/* ====== FOOTER ====== */
+.footer {
+  background: var(--green);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.footer-links {
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 0.8rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (min-width: 768px) {
+  .hero-logo { width: 140px; }
+  .hero-swiper { height: 350px; }
+}
+
+@media (min-width: 1024px) {
+  .hero-logo { width: 160px; }
+  .hero-swiper { height: 450px; }
+}
